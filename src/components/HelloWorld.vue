@@ -1,15 +1,20 @@
 <template>
   <div class="hello">
-    <li v-for="item in items">
-      {{ item.message }}
-    </li>
+   <input
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
+  />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+<script>
+export default {
+  props: ['modelValue'],
+  emits: ['update:modelValue']
+}
+</script>
 
-const items = ref([{ message: 'Foo' }, { message: 'Bar' }]);
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
